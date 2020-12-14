@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hello World!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- bootstrap 4.0.0-beta.2 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+        integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous">
+    <!-- main style -->
+    <link rel="stylesheet" type="text/css" href="css/main.css?v=2018.09.20">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <div class='slider-navigation'>
+            <div class='nav-pointer draggable'>
+                0/0
+            </div>
+        </div>
+    </header>
+    <div class='site-container'>
+        <!-- select style button -->
+        <div class="btn-group" id="changestyle">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <span id="selstyle">Style Space</span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#" data-val="default">Style Block</a></li>
+                <li><a class="dropdown-item" href="#" data-val="space">Style Space</a></li>
+                <li><a class="dropdown-item" href="#" data-val="snow">Style Snow</a></li>
+            </ul>
+        </div>
+        <section class='intro'>
+            <div id='particles-js'></div>
+            <div class='wrap'>
+                <div class='content'>
+                    <div class="profile-card">
+                        <header>
+                            <!-- avatar -->
+                            <a><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0HERESBxMQDxESEBEWDQ8PEhASDRASFxEWIhgRExMYHCggGBolGxMVITEhJSkrLi4uFx8zODMsNygtLi4BCgoKDQ0NDw0NDisZFRkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAOEA4QMBIgACEQEDEQH/xAAbAAEAAwEBAQEAAAAAAAAAAAAAAQUGBAMCB//EADUQAQABAgIHBQYFBQAAAAAAAAABAgMEEQUSITFRYXETM0GBkSIyQrHB8WKCodHhFBVScvD/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AP0QAAAAAAAAAAAAAAAAAAAAAAAAABCUAkAAAAAAAAAAAATRRNc5URnM7ohbYTRtNG2/7U8Phj9wVtnDV3+7iZ5+Hq7Leiap7yqI6ZytY2bkiK3+00/5T6Q8MRoyq3GdudbjHxfyuQGYGiu4a3e7ymJ5+Pq5LuiqKu6maZ57YFVA9cRh68POVyOkxul5AAAAAAAISgEgAAAAAAAAAERNWyNs+AsNEWNaZrq+HZT1/wC+YO3A4SMNGdW2qd88OUOoBAAAAAAHxdt03YmLkZxKgxVicPVNM+U8YaJW6aozimrhMx6/YFUAKAAAAISgEgAAAAAAAAAL7R9HZ26ecZz5qBprcasRHCI+QPoAQAAAAAAcOl+7/NDucWlu7/NAKUAUAAAAQlAJAAAAAAAAAAadmIaeQABAAAAAAByaTp1rdXLKf1daKozic+AMyE8gUAAAAQlAJAAAAAAAAABDTxOe1mV3o3EdtRlO+nZPTwkHYAIAAAAAAPHF3OyoqnlOXXweyq0xfzyop61fSAViQFAAAAEJQCQAAAAAAAAAHtg7/wDT1xVO7dV0eIDTU1RXETTtid0pV+h7utTNM/DOzpP2lYCAAAAAAPHF3uwomr06s/VVNUzNW2Znas9M3fdpjrP0+qrFAAAAAAEJQCQAAAAAAAAAAAdmirvZ15T8UZefgu2YictseDS0TrRE8YgH0AIAAAQDPYy52tdU88o6Q8SeYKAAAAAAISgEgAAAAAAAAABETVsjbPhC3wGA7P2r/veEeEdeYOTDaOru5TX7Mc98x0XURluSCAAAAAAKbSODqoqmq3GdM7Zy8J5uFp1TpLBant2d3xRw5wKrgAAAAAEJQCQAAAB7WcJcve5TOXGdkOu3omqe8qiOURmCuF1b0Zap97OrrP7Om3Yot93TTHlGfqCitYW5d9ymes7I9ZddnRUz305cqds+q2BHjYw1Fju4852z6vYAAAAAAAAAEb0gKzE6L1pzw85fhnd5S4L2GuWe8pmOe+PWGiAZgXt7AWrvhqzxp2fo4L2i66O6mKo9JFcImuiaNlcTE84yQAhKASAA98DZ7aumJ3b56Q8FpoW371U8oj6/QFmAIAAAAAAAAAAAAAAAAAAAA+a6Ir2VxExzV2K0ZE7cPs/DO7ylZgMxVE0zlVsmN8IW2l7ETEV0784irp4SqRUgAL3RtGpbp57fVRUxrTlHjLS26dSIiPCIj0gH0AIAAAAAAAAAAAAAAAAAAAAAA58dRr26ojh8mfahnsZZ7CuYjdvjpIrxAB06No17lPLOZ8v5yXyp0NRnNU8IiPX7LYQAAAAAAAAAAAAAAAAAAAAAAAAVOmqNtNXGJifL7rZwaYpzoieFUfqCnAFXOiKNW3M8apdzwwVGpbpjl83uIAAAAAAAAAAAAAAAAAAAAAAAAObSFOtar6Z+kul8XqdamqONM/IGbDIFaS17tP8ArHyfYCAAAAAAAAAAAAAAAAAAAAAAAACJAGfAFf/Z" class="unselectable"></a>
+                            <!-- name -->
+                            <h1 class="unselectable">Program Warehouse</h1>
+                            <!-- role -->
+                            <h2 class="unselectable">________ _____ Developer</h2>
+                        </header>
+                        <div class="profile-bio">
+                            <p class="unselectable">
+                                Self description
+                                <br>in 2 line
+                            </p>
+                        </div>
+                        <!-- social links -->
+                        <ul class="profile-social-links">
+                            <li><a target="_blank" href="https://www.linkedin.com/company/program-warehouse">
+                                    <i class="fa fa-lg fa-linkedin"></i>
+                                </a>
+                            </li>
+                            <li><a target="_blank" href="https://github.com/Program-Warehouse">
+                                    <i class="fa fa-lg fa-github"></i>
+                                </a>
+                            </li>
+                            <li><a target="_blank" href="https://www.instagram.com/programwarehouse/">
+                                    <i class="fa fa-lg fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li><a target="_blank" href="https://twitter.com/ProgramWH">
+                                    <i class="fa fa-lg fa-twitter"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="parallax-window" data-parallax="scroll" data-image-src="img/Ottawa_1920x1080.jpg"></div>
+        <section>
+            <div class="about-me">
+                <div class="text-center">
+                    <img class="unselectable" src="img/about-me.png" height="100" width="550">
+                    <br><br>
+                </div>
+                <div class="clearfix"></div>
+                <div class="about-me__content" id="terminal-start">
+                    <p></p>
+                    <pre style="border: none;"></pre>
+                    <br><br>
+                    <div class="command">
+                        <!-- email -->
+                        <p>echo $email</p>
+                        <span class="hideme">email: programwarehouse@gmail.com</span>
+                        <!-- phone -->
+                        <p>echo $phone</p>
+                        <span class="hideme">phone: +91 8882068839</span>
+                        <!-- address -->
+                        <p>echo $address</p>
+                        <span class="hideme">address: address</span>
+                        <!-- education -->
+                        <p>echo $education</p>
+                        <span class="hideme">university<br>
+                            course</span>
+                        <!-- eligible_to_work -->
+                        <p>echo $eligible_to_work</p>
+                        <span class="hideme">Resident of India</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="parallax-window-half" data-parallax="scroll"></div>
+        <section class="flx-center">
+            <div class="text-center">
+
+                <!-- Block 5  -->
+                <div class="one-block latest-block">
+                    <p class="h4 text-center">Block #: 005</p>
+                    <p><label>Date: 14 Dec 2020</label></p>
+                    <div class="block-data">
+                        <p>
+                            <label>Title:</label><b>Post Name</b></p>
+                        <p>
+                            <label>Company:</label>Company Name</p>
+                        <p>
+                            <label>Stack:</label>Skills/Stack using in company</p>
+                        <p>
+                            <label>Time:</label>mmm yyyy - Present</p>
+                    </div>
+                </div>
+
+                <!-- Block 4 -->
+                <div class="one-block">
+                    <p class="h4 text-center">Block #: 004</p>
+                    <p><label>Date: 14 Dec 2020</label></p>
+                    <div class="block-data">
+                        <p>
+                            <label>Title:</label><b>Post Name</b></p>
+                        <p>
+                            <label>Company:</label>Company Name</p>
+                        <p>
+                            <label>Stack:</label>Skills/Stack using in company</p>
+                        <p>
+                            <label>Time:</label>mmm yyyy - mmm yyyy</p>
+                    </div>
+                </div>
+
+                <!-- Block 3 -->
+                <div class="one-block">
+                    <p class="h4 text-center">Block #: 003</p>
+                    <p><label>Date: 14 Dec 2020</label></p>
+                    <div class="block-data">
+                        <p>
+                            <label>Title:</label><b>Post Name</b></p>
+                        <p>
+                            <label>Company:</label>Company Name</p>
+                        <p>
+                            <label>Stack:</label>Skills/Stack using in company</p>
+                        <p>
+                            <label>Time:</label>mmm yyyy - mmm yyyy</p>
+                    </div>
+                </div>
+
+                <br>
+                <!-- Block 2 -->
+                <div class="one-block hide-mobile">
+                    <p class="h4 text-center">Block #: 002</p>
+                    <p><label>Date: 14 Dec 2020</label></p>
+                    <div class="block-data">
+                        <p>
+                            <label>Title:</label><b>Post Name</b></p>
+                        <p>
+                            <label>Company:</label>Company Name</p>
+                        <p>
+                            <label>Stack:</label>Skills/Stack using in company</p>
+                        <p>
+                            <label>Time:</label>mmm yyyy - mmm yyyy</p>
+                    </div>
+                </div>
+
+                <!-- Block 1 -->
+                <div class="one-block hide-mobile">
+                    <p class="h4 text-center">Block #: 001</p>
+                    <p><label>Date: 14 Dec 2020</label></p>
+                    <div class="block-data">
+                        <p>
+                            <label>Title:</label><b>Post Name</b></p>
+                        <p>
+                            <label>Company:</label>Company Name</p>
+                        <p>
+                            <label>Stack:</label>Skills/Stack using in company</p>
+                        <p>
+                            <label>Time:</label>mmm yyyy - mmm yyyy</p>
+                    </div>
+                </div>
+
+                <div class="text-center h5">#coder</div>
+            </div>
+        </section>
+        <div class="parallax-window" data-parallax="scroll" data-image-src="img/test-oct-6.png"></div>
+        <!-- =================== script =================== -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+        <script src="lib/parallax.js-1.4.2/parallax.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+
+        <!-- particles js -->
+        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+        <!-- bootstrap 4.0.0-beta.2 -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+            crossorigin="anonymous"></script>
+
+        <!-- main js file -->
+        <script src="js/main.js"></script>
+
+        <script>
+            $(document).ready(function () {
+
+                // random style on page load
+                let display_text = ''
+                switch (Math.round(Math.random() * 2 + 1)) {
+                    case 1:
+                        styleDefault();
+                        display_text = 'Style Block'
+                        break;
+                    case 2:
+                        styleSpace();
+                        display_text = 'Style Space'
+                        break;
+                    case 3:
+                        styleSnow();
+                        display_text = 'Style Snow'
+                        break;
+                    default:
+                        styleSpace();
+                        display_text = 'Style Block'
+                }
+                $('#selstyle').text(display_text);
+
+                $('#changestyle .dropdown-menu a').click(function () {
+                    var style = $(this).data('val');
+                    switch (style) {
+                        case 'default':
+                            styleDefault();
+                            break;
+                        case 'space':
+                            styleSpace();
+                            break;
+                        case 'snow':
+                            styleSnow();
+                            break;
+                        default:
+                            styleSpace();
+                    }
+                    $('#selstyle').text($(this).text());
+                });
+
+                /*-------------------------------
+                    terminal linux style
+                -------------------------------*/
+                var about_me_content_displayed = false;
+                var $lines = $('.command p');
+                $lines.hide();
+
+                var lineContents = [];
+                var output = [];
+
+                var terminal = function () {
+                    var skip = 0;
+                    typeLine = function (idx) {
+                        idx == null && (idx = 0);
+                        var element = $lines.eq(idx);
+                        var content = lineContents[idx];
+                        if (typeof content == "undefined") {
+                            $('.skip').hide();
+                            return;
+                        }
+                        var charIdx = 0;
+                        var typeChar = function () {
+                            var rand = Math.round(Math.random() * 150) + 20;
+
+                            setTimeout(function () {
+                                var char = content[charIdx++];
+                                element.append(char);
+                                if (typeof char !== "undefined")
+                                    typeChar();
+                                else {
+                                    element.append('<br/><span class="output">' + output[idx] + '</span>');
+                                    element.removeClass('active');
+                                    typeLine(++idx);
+                                }
+                            }, skip ? 0 : rand);
+                        }
+                        element.append('[user@ip-127-0-0-1 ~]$ ').addClass('active');
+                        typeChar();
+                    }
+
+                    $lines.each(function (i) {
+                        lineContents[i] = $(this).text();
+                        output[i] = $(this).next('span').html();
+                        $(this).text('').show();
+                    });
+                    typeLine();
+                }
+
+                $(window).scroll(function () {
+                    var hT = $('#terminal-start').offset().top,
+                        hH = $('#terminal-start').outerHeight(),
+                        wH = $(window).height(),
+                        wS = $(this).scrollTop() - 250;
+                    if (wS > (hT + hH - wH) && !about_me_content_displayed) {
+                        about_me_content_displayed = true;
+                        terminal();
+                    }
+                });// end terminal style -------
+
+                $('section').each(function () {
+                    $('.slider-navigation').prepend('<div class="tick"></div>');
+                });
+
+                $('.tick').on('click', function () {
+                    var tickIndex = $(this).index();
+                    $('body').scrollTop($(window).height() * tickIndex);
+                });
+
+                updatePos();
+            }); // end document ready -------
+
+            var isDragging = false;
+            var sliderTop, pointerPos, currentSection;
+
+            var bodyHeight = $('body').height();
+            var sliderHeight = $('.slider-navigation').height();
+            var elementHeight = $('section').height();
+            var sectionAmount = $('section').length;
+            var scale = (bodyHeight - (elementHeight)) / (sliderHeight - $('.nav-pointer').outerHeight());
+
+            var waitForFinalEvent = (function () {
+                var timers = {};
+                return function (callback, ms, uniqueId) {
+                    if (!uniqueId) {
+                        uniqueId = "resize";
+                    }
+                    if (timers[uniqueId]) {
+                        clearTimeout(timers[uniqueId]);
+                    }
+                    timers[uniqueId] = setTimeout(callback, ms);
+                };
+            })();
+
+            function updatePos() {
+                currentSection = $(window).scrollTop() / elementHeight;
+                currentSectionNum = Math.ceil(currentSection + 0.01);
+                sliderTop = $(window).scrollTop() / scale;
+                $('.nav-pointer').css('top', sliderTop).text(currentSectionNum + '/' + sectionAmount);
+            }
+
+            function sliderMove(e) {
+                $('body').scrollTop(parseInt(e) * scale);
+            }
+
+            $(window).scroll(function () {
+                if (!isDragging) {
+                    updatePos();
+                }
+            });
+
+            $(window).resize(function () {
+                waitForFinalEvent(function () {
+                    bodyHeight = $('body').height();
+                    sliderHeight = $('.slider-navigation').height();
+                    elementHeight = $('section').height();
+                    sectionAmount = $('section').length;
+                    scale = (bodyHeight - (elementHeight)) / (sliderHeight - $('.nav-pointer').outerHeight());
+
+                    updatePos();
+                }, 500, "resizing");
+            });
+        </script>
+</body>
+
+</html>
